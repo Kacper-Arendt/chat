@@ -4,11 +4,11 @@ import express, { Express, Request, Response } from 'express';
 import { port } from './config';
 import helmet from 'helmet';
 import bodyParser from 'body-parser';
-import { dbConnect } from './utils/db';
+import { connectToDatabase } from './utils/db';
 
 const app: Express = express();
 
-dbConnect();
+connectToDatabase();
 // MIDDLEWARE
 app.use(helmet());
 app.use(bodyParser.json());
