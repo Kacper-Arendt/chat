@@ -1,5 +1,5 @@
 import { DataTypes, Model } from 'sequelize';
-import { sequelize } from '../utils/db';
+import { sequelize } from '../utils';
 
 export class User extends Model {
   declare id: string;
@@ -26,28 +26,21 @@ User.init(
     },
     username: {
       type: DataTypes.STRING,
-      unique: true,
-      allowNull: false,
     },
     passwordHash: {
       type: DataTypes.STRING,
-      allowNull: true,
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: true,
     },
     surname: {
       type: DataTypes.STRING,
-      allowNull: true,
     },
     age: {
       type: DataTypes.SMALLINT,
-      allowNull: true,
     },
     public: {
       type: DataTypes.BOOLEAN,
-      allowNull: true,
       defaultValue: true,
     },
   },
