@@ -1,23 +1,32 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express } from 'express';
 
 // UTILS
 import { port } from './config';
+import { connectToDatabase } from './utils/db';
+
+// MIDDLEWARES
 import helmet from 'helmet';
 import bodyParser from 'body-parser';
-import { connectToDatabase } from './utils/db';
+import { unknownEndpoint, errorHandler } from './middlewares';
+
+// ROUTES
+import { router } from './routes';
 
 const app: Express = express();
 
 connectToDatabase();
-// MIDDLEWARE
-app.use(helmet());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', (req: Request, res: Response) => {
-  res.send(`Express + TypeScript Server is running on port ${port}`);
-});
+app.use(helmet());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.use('/', router);
+
+// app.use('/', router);
+
+app.use(unknownEndpoint);
+app.use(errorHandler);
 
 app.listen(port, () => {
-  console.log(`⚡️[server]: Server is running at https://localhost:${port}`);
+  console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
