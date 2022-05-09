@@ -2,7 +2,7 @@ import express, { Express } from 'express';
 
 // UTILS
 import { port } from './config';
-import { connectToDatabase } from './utils/db';
+import { connectToDatabase } from './utils';
 
 // MIDDLEWARES
 import helmet from 'helmet';
@@ -21,8 +21,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use('/', router);
-
-// app.use('/', router);
 
 app.use(unknownEndpoint);
 app.use(errorHandler);

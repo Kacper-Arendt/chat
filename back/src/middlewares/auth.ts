@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import { TokenPayload, validateToken } from '../utils/jwt';
+import { TokenPayload, validateToken } from '../utils';
 
 interface RequestData extends Request {
-  decodedToken: TokenPayload;
+  decodedToken?: TokenPayload;
 }
 
 export const tokenExtractor = async (req: RequestData, res: Response, next: NextFunction) => {

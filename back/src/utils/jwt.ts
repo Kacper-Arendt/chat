@@ -2,7 +2,7 @@ import { Secret, sign, SignOptions, verify } from 'jsonwebtoken';
 import { SECRET } from '../config';
 
 interface PayloadData {
-  id: number;
+  id: string;
   email: string;
   accessTypes?: string[];
 }
