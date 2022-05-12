@@ -15,9 +15,7 @@ export const login = async (req: Request, res: Response) => {
 
     const passwordCorrect = user === null ? false : await compare(password, user?.passwordHash);
 
-    if (!(passwordCorrect || !user)) {
-      return res.status(401).json({ error: 'Invalid password or username' });
-    }
+    if (!(passwordCorrect || !user)) return res.status(401).json({ error: 'Invalid password or username' });
 
     if (user) {
       const token = generateToken({ id: user.id, email: email });

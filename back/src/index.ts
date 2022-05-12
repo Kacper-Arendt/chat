@@ -12,19 +12,22 @@ import { unknownEndpoint, errorHandler } from './middlewares';
 // ROUTES
 import { router } from './routes';
 
-const app: Express = express();
+export const app: Express = express();
 
-connectToDatabase();
+export let connected = false;
 
-app.use(helmet());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+connectToDatabase().then(() => {
+  connected = true;
+  app.use(helmet());
+  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.json());
 
-app.use('/', router);
+  app.use('/', router);
 
-app.use(unknownEndpoint);
-app.use(errorHandler);
+  app.use(unknownEndpoint);
+  app.use(errorHandler);
 
-app.listen(port, () => {
-  console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
+  app.listen(port, () => {
+    console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
+  });
 });
