@@ -14,7 +14,7 @@
     "prestart": "npm run build",
     "start": "cross-env NODE_ENV=production node dist/index.js",
     "test2": "cross-env NODE_ENV=test jest --verbose --runInBand --detectOpenHandles",
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles --verbose"
   },
   "dependencies": {
     "@jest/types": "^28.1.0",

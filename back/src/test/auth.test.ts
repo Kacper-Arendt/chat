@@ -11,7 +11,7 @@ beforeAll(async () => {
 describe('user login', () => {
   const credentials = { password: 'admin', email: 'admin' };
 
-  test('should login with res body', (done) => {
+  test('should login with credentials and return  body', (done) => {
     api
       .post('/login/')
       .send(credentials)
