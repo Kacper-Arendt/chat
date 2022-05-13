@@ -14,10 +14,7 @@ import { router } from './routes';
 
 export const app: Express = express();
 
-export let connected = false;
-
 connectToDatabase().then(() => {
-  connected = true;
   app.use(helmet());
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());

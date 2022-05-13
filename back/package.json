@@ -13,7 +13,8 @@
     "dev": "cross-env NODE_ENV=development concurrently \"tsc --watch\" \"nodemon -q dist/index.js\"",
     "prestart": "npm run build",
     "start": "cross-env NODE_ENV=production node dist/index.js",
-    "test": "cross-env NODE_ENV=test jest --verbose --runInBand --detectOpenHandles"
+    "test2": "cross-env NODE_ENV=test jest --verbose --runInBand --detectOpenHandles",
+    "test": "jest --detectOpenHandles"
   },
   "dependencies": {
     "@jest/types": "^28.1.0",
