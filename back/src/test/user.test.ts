@@ -51,3 +51,27 @@ describe('user can create an account', () => {
       });
   });
 });
+
+describe('logged user can get profile data', () => {
+  let token: string;
+
+  beforeAll((done) => {
+    api
+      .post('/login')
+      .send({ email: 'admin', password: 'admin' })
+      .end((err, response) => {
+        token = response.body.token;
+        done();
+      });
+  });
+
+  test('should return profile data', (done) => {
+    api
+      .get('/users')
+      .set('Authorization', `Bearer ${token}`)
+      .end((err, res) => {
+        expect(res.status).toBe(200);
+        done();
+      });
+  });
+});
