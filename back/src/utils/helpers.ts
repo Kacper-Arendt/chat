@@ -1,1 +1,1 @@
-export const checkIfNotNull = (variable: any) => variable === null || variable.length === 0;
+export const checkIfNull = (variable: any) => variable === null || variable.length === 0;

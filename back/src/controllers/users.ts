@@ -1,7 +1,7 @@
 import { User } from '../models';
 import { hash } from 'bcrypt';
 import { Request, Response } from 'express';
-import { checkIfNotNull } from '../utils';
+import { checkIfNull } from '../utils';
 
 export const getUsers = async (req: Request, res: Response) => {
   try {
@@ -37,7 +37,7 @@ export const createUser = async (req: Request, res: Response) => {
   try {
     const { password, username, email } = req.body;
 
-    if (checkIfNotNull(password) || checkIfNotNull(username) || checkIfNotNull(email)) {
+    if (Object.keys(req.body).length < 3 || checkIfNull(password) || checkIfNull(username) || checkIfNull(email)) {
       return res.status(404).json({ error: 'Data not provided' });
     }
 
@@ -54,7 +54,6 @@ export const createUser = async (req: Request, res: Response) => {
 
     return res.status(200).json({ id: newUser.id, email, username });
   } catch (e) {
-    console.log(e);
     res.status(500).json({ error: 'The server cannot create the user' });
   }
 };

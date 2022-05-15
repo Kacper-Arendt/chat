@@ -1,12 +1,4 @@
-import { sleep } from './helperTest';
-import { app } from '../';
-import supertest from 'supertest';
-
-const api = supertest(app);
-
-beforeAll(async () => {
-  await sleep(3);
-});
+import { api } from './helperTest';
 
 describe('user login', () => {
   const credentials = { password: 'admin', email: 'admin' };
