@@ -7,6 +7,7 @@ import { connectToDatabase } from './utils';
 // MIDDLEWARES
 import helmet from 'helmet';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 import { unknownEndpoint, errorHandler } from './middlewares';
 
 // ROUTES
@@ -15,6 +16,7 @@ import { router } from './routes';
 export const app: Express = express();
 
 connectToDatabase().then(() => {
+  app.use(cors());
   app.use(helmet());
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
