@@ -13,5 +13,13 @@ export default createGlobalStyle`
       padding: 0;
       font-family: ${({ theme }) => theme.font};
     }
+
+    button {
+      cursor: pointer;
+
+      :disabled {
+        cursor: not-allowed;
+      }
+    }
   `}
 `;

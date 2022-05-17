@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
 
-import { ColorType } from "utils/theme/themeDefault";
+import { ColorsKeys } from "utils/theme/themeDefault";
 
 interface Props {
-  color?: ColorType;
+  color?: ColorsKeys;
   size: number;
 }
 
