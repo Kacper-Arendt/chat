@@ -1,6 +1,7 @@
 import { SyntheticEvent, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { HiCursorClick } from "react-icons/hi";
 
 import { LoginCredentials, useLoginMutation } from "redux/slices/user";
 import { useField } from "hoc/hooks";
@@ -75,7 +76,9 @@ export const Login = () => {
       <ButtonType1 onClick={() => {}} type="submit" loading={isLoading}>
         {t("form.login")}
       </ButtonType1>
-      <Link path="/register">{t("form.dontHaveAccount")}</Link>
+      <Link path="/register">
+        {t("form.dontHaveAccount")} <HiCursorClick />
+      </Link>
     </Form>
   );
 };

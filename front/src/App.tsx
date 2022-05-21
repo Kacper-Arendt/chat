@@ -20,10 +20,10 @@ const App = () => {
     <ThemeProvider theme={ThemeDefault}>
       <GlobalStyles />
       <StyledWrapper>
-        {/*<div>*/}
-        {/*  <button onClick={() => changeLanguage("en")}>en</button>*/}
-        {/*  <button onClick={() => changeLanguage("pl")}>pl</button>*/}
-        {/*</div>*/}
+        <div>
+          <button onClick={() => changeLanguage("en")}>en</button>
+          <button onClick={() => changeLanguage("pl")}>pl</button>
+        </div>
         <HashRouter>
           <Routes>
             <Route path="/" element={<Login />} />

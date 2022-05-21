@@ -12,6 +12,9 @@ interface LinkProps {
 }
 
 const StyledLink = styled(RouterLink)`
+  display: flex;
+  align-items: center;
+  column-gap: 0.25rem;
   text-decoration: none;
   color: ${({ theme }) => theme.black};
 
@@ -21,6 +24,9 @@ const StyledLink = styled(RouterLink)`
     css`
       color: ${theme[color]};
     `}
+  svg {
+    font-size: 1.2em;
+  }
 `;
 
 export const Link = ({ path, color, children, external }: LinkProps) => {

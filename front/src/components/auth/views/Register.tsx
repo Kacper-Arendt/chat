@@ -1,5 +1,6 @@
 import { SyntheticEvent } from "react";
 import { useTranslation } from "react-i18next";
+import { HiCursorClick } from "react-icons/hi";
 
 import { useField } from "hoc/hooks";
 import { Form } from "components/auth/sections";
@@ -66,7 +67,9 @@ export const Register = () => {
       <ButtonType1 loading={isLoading} onClick={() => {}} type="submit">
         {t("form.register")}
       </ButtonType1>
-      <Link path="/login">{t("form.haveAccount")}</Link>
+      <Link path="/login">
+        {t("form.haveAccount")} <HiCursorClick />
+      </Link>
     </Form>
   );
 };
