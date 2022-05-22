@@ -11,6 +11,7 @@ const StyledWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: ${({ theme }) => theme.grey100};
 `;
 
 const App = () => {

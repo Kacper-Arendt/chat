@@ -3,11 +3,11 @@ import { AiOutlineWechat } from "react-icons/ai";
 import { useTranslation } from "react-i18next";
 
 // COREUI
-import { Link } from "coreUI/Link";
+import { Link } from "coreUI/elements";
 
 const StyledAside = styled.aside`
   display: flex;
-  flex-direction: column;
+  align-items: center;
   height: 100%;
   width: 100%;
   max-height: 3rem;
@@ -19,7 +19,8 @@ const StyledAside = styled.aside`
   border-top-right-radius: ${({ theme }) => theme.radius[3]};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    max-width: 3rem;
+    flex-direction: column;
+    max-width: 4rem;
     max-height: 100%;
     padding: 1rem 0.5rem;
 

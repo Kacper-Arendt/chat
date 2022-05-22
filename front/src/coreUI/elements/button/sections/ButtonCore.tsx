@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import styled, { css } from "styled-components";
 
-import { Spinner } from "coreUI/loader/Spinner";
+import { Spinner } from "coreUI/elements/loader/Spinner";
 import { ColorsKeys } from "utils/theme/themeDefault";
 
 interface StyledButtonProps {

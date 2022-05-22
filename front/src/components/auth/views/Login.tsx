@@ -12,9 +12,7 @@ import { useAppDispatch } from "redux/hooks";
 import { userLogin } from "redux/slices/user";
 
 // COREUI
-import { Input } from "coreUI/form";
-import { ButtonType1 } from "coreUI/button";
-import { Link } from "coreUI/Link";
+import { Input, ButtonType1, Link } from "coreUI/elements";
 
 const initialState: LoginCredentials = {
   email: "",

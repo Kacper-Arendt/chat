@@ -7,9 +7,7 @@ import { Form } from "components/auth/sections";
 import { RegisterCredentials, useRegisterMutation } from "redux/slices/user";
 
 // coreUI
-import { Input } from "coreUI/form";
-import { ButtonType1 } from "coreUI/button";
-import { Link } from "coreUI/Link";
+import { Input, ButtonType1, Link } from "coreUI/elements";
 
 const initialState: RegisterCredentials = {
   email: "",

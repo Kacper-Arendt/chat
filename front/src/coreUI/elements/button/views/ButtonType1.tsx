@@ -1,4 +1,4 @@
-import { BasicButtonProps, ButtonCore } from "coreUI/button";
+import { BasicButtonProps, ButtonCore } from "coreUI/elements/button";
 
 export interface ButtonType1Props extends BasicButtonProps {
   border?: boolean;

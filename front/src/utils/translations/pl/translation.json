@@ -10,5 +10,7 @@
   "form.register": "Załóż konto",
   "form.dontHaveAccount": "Nie masz konta?",
   "form.haveAccount": "Masz konto?",
-  "chats": "Czaty"
+  "chats": "Czaty",
+  "chat.newMessage": "Nowa wiadomość",
+  "search": "Szukaj"
 }

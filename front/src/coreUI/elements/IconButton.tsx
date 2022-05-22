@@ -13,18 +13,21 @@ interface IconButtonProps {
 }
 
 const StyledIconButton = styled.button<IconButtonProps>`
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+
   ${({ size }) =>
     size &&
     css`
       font-size: ${size}rem;
     `}
-
   ${({ theme, color }) =>
     color &&
     theme[color] &&
     css`
       color: ${theme[color]};
-    `}
+    `};
 `;
 
 export const IconButton = ({
