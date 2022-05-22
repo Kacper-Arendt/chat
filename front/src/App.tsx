@@ -3,7 +3,7 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { GlobalStyles, ThemeDefault } from "utils";
-import { Login, Register } from "routes";
+import { Login, Register, Home } from "routes";
 
 const StyledWrapper = styled.div`
   height: 100vh;
@@ -26,8 +26,9 @@ const App = () => {
         </div>
         <HashRouter>
           <Routes>
-            <Route path="/" element={<Login />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/" element={<Home />} />
             {/*<Route path="/" element={<PrivateRoute children={<Notes />} />} />*/}
           </Routes>
         </HashRouter>
