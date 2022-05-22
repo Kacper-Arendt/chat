@@ -46,8 +46,12 @@
     ]
   },
   "devDependencies": {
+    "@cypress/react": "^5.12.5",
+    "@cypress/webpack-dev-server": "^1.8.4",
     "@typescript-eslint/eslint-plugin": "^5.21.0",
     "@typescript-eslint/parser": "^5.21.0",
+    "cypress": "^9.6.1",
+    "cypress-react-unit-test": "^4.17.2",
     "eslint": "^8.14.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^16.1.0",
@@ -58,6 +62,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.5.0",
+    "html-webpack-plugin": "^4.5.2",
     "lint-staged": "^12.3.4",
     "polished": "^4.2.2",
     "prettier": "2.6.2"

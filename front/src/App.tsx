@@ -1,5 +1,5 @@
 import styled, { ThemeProvider } from "styled-components";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { GlobalStyles, ThemeDefault } from "utils";
@@ -24,14 +24,14 @@ const App = () => {
           <button onClick={() => changeLanguage("en")}>en</button>
           <button onClick={() => changeLanguage("pl")}>pl</button>
         </div>
-        <HashRouter>
+        <Router>
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/" element={<Home />} />
             {/*<Route path="/" element={<PrivateRoute children={<Notes />} />} />*/}
           </Routes>
-        </HashRouter>
+        </Router>
       </StyledWrapper>
     </ThemeProvider>
   );
