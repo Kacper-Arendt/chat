@@ -1,19 +1,17 @@
-import { Spinner } from "coreUI/loader/Spinner";
 import styled, { css } from "styled-components";
-import { ChangeEvent } from "react";
+import { ChangeEvent, InputHTMLAttributes } from "react";
 
-import { ColorType } from "utils/theme/themeDefault";
+import { ColorsKeys } from "utils/theme/themeDefault";
 
-interface Props {
-  title: string;
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
-  onChange?: (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-  btnType?: "button" | "reset" | "submit";
+  onChange: (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  title?: string;
   type?: string;
   error?: string;
   value?: string;
-  bgColor?: ColorType;
-  loading?: boolean;
+  bgColor?: ColorsKeys;
+  placeholder?: string;
 }
 
 const Label = styled.label`
@@ -21,16 +19,11 @@ const Label = styled.label`
   flex-direction: row;
   flex-wrap: wrap;
   font-size: 0.9rem;
-  width: 20rem;
 
   p {
     width: 100%;
     font-size: 0.8rem;
     color: ${({ theme }) => theme.danger};
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 15rem;
   }
 `;
 
@@ -38,8 +31,9 @@ const StyledInput = styled.input<{ bgColor: string }>`
   width: 100%;
   padding: 0.85rem;
   font-size: 1rem;
-  border: 1px solid ${({ theme }) => theme.grey500};
+  border: 1px solid ${({ theme }) => theme.grey100};
   border-radius: ${({ theme }) => theme.radius[1]};
+
   ${({ theme, bgColor }) =>
     bgColor &&
     theme[bgColor] &&
@@ -48,39 +42,27 @@ const StyledInput = styled.input<{ bgColor: string }>`
     `};
 `;
 
-const StyledButton = styled.button<{ type: string }>`
-  margin-left: auto;
-  border: none;
-  background: transparent;
-  font-weight: ${({ theme }) => theme.fontWeight.bold};
-  cursor: pointer;
-  min-height: 1.5rem;
-`;
-
 export const Input = ({
   title,
   type = "text",
   bgColor = "transparent",
   error,
-  btnType,
   onChange,
   name,
   value,
-  loading,
-}: Props) => (
+  placeholder,
+  ...rest
+}: InputProps) => (
   <Label>
-    {title}
-    {btnType && (
-      <StyledButton type={btnType}>
-        {loading ? <Spinner size={1} /> : "Zmień"}
-      </StyledButton>
-    )}
+    {title && title}
     <StyledInput
       type={type}
       bgColor={bgColor}
       onChange={onChange}
       name={name}
       value={value}
+      placeholder={placeholder}
+      {...rest}
     />
     {error && <p>{error}</p>}
   </Label>

@@ -1,3 +1,13 @@
 {
-  "hello": "Witaj"
+  "hello": "Witaj",
+  "form.change": "Zmień",
+  "form.signIn": "Zaloguj się",
+  "form.signUp": "Zarejestruj się",
+  "form.username": "Nazwa użytkownika",
+  "form.email": "E-mail",
+  "form.password": "Hasło",
+  "form.login": "Zaloguj się",
+  "form.register": "Załóż konto",
+  "form.dontHaveAccount": "Nie masz konta?",
+  "form.haveAccount": "Masz konto?"
 }
