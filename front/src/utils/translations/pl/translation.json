@@ -9,5 +9,6 @@
   "form.login": "Zaloguj się",
   "form.register": "Załóż konto",
   "form.dontHaveAccount": "Nie masz konta?",
-  "form.haveAccount": "Masz konto?"
+  "form.haveAccount": "Masz konto?",
+  "chats": "Czaty"
 }

@@ -9,9 +9,11 @@ interface LinkProps {
   children: ReactNode;
   color?: ColorsKeys;
   external?: boolean;
+  size?: number;
+  title?: string;
 }
 
-const StyledLink = styled(RouterLink)`
+const StyledLink = styled(RouterLink)<{ size: number }>`
   display: flex;
   align-items: center;
   column-gap: 0.25rem;
@@ -25,11 +27,22 @@ const StyledLink = styled(RouterLink)`
       color: ${theme[color]};
     `}
   svg {
-    font-size: 1.2em;
+    ${({ size }) =>
+      size &&
+      css`
+        font-size: ${size}rem;
+      `}
   }
 `;
 
-export const Link = ({ path, color, children, external }: LinkProps) => {
+export const Link = ({
+  path,
+  color,
+  children,
+  external,
+  size = 1.2,
+  title,
+}: LinkProps) => {
   if (external) {
     return (
       <StyledLink
@@ -38,13 +51,22 @@ export const Link = ({ path, color, children, external }: LinkProps) => {
         href={path}
         target="_blank"
         rel="noreferrer"
+        size={size}
+        title={title}
+        aria-label={title}
       >
         {children}
       </StyledLink>
     );
   }
   return (
-    <StyledLink color={color} to={path}>
+    <StyledLink
+      color={color}
+      to={path}
+      size={size}
+      title={title}
+      aria-label={title}
+    >
       {children}
     </StyledLink>
   );

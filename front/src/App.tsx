@@ -4,9 +4,13 @@ import { useTranslation } from "react-i18next";
 
 import { GlobalStyles, ThemeDefault } from "utils";
 import { Login, Register, Home } from "routes";
+import { AppLayout, PrivateRoute } from "hoc";
 
 const StyledWrapper = styled.div`
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const App = () => {
@@ -20,16 +24,17 @@ const App = () => {
     <ThemeProvider theme={ThemeDefault}>
       <GlobalStyles />
       <StyledWrapper>
-        <div>
-          <button onClick={() => changeLanguage("en")}>en</button>
-          <button onClick={() => changeLanguage("pl")}>pl</button>
-        </div>
+        {/*<div>*/}
+        {/*  <button onClick={() => changeLanguage("en")}>en</button>*/}
+        {/*  <button onClick={() => changeLanguage("pl")}>pl</button>*/}
+        {/*</div>*/}
         <Router>
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/" element={<Home />} />
-            {/*<Route path="/" element={<PrivateRoute children={<Notes />} />} />*/}
+            <Route element={<PrivateRoute children={<AppLayout />} />}>
+              <Route path="/" element={<Home />} />
+            </Route>
           </Routes>
         </Router>
       </StyledWrapper>
