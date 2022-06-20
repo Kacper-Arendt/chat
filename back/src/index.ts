@@ -14,7 +14,6 @@ import { unknownEndpoint, errorHandler } from './middlewares';
 import { router } from './routes';
 
 export const app: Express = express();
-
 connectToDatabase().then(() => {
   app.use(cors());
   app.use(helmet());

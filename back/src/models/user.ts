@@ -1,5 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../utils';
+import { Friendship } from './Friendship';
 
 export class User extends Model {
   declare id: string;
@@ -10,6 +11,7 @@ export class User extends Model {
   declare surname: string;
   declare age: number;
   declare public: boolean;
+  declare image: string;
 }
 
 User.init(
@@ -43,6 +45,9 @@ User.init(
       type: DataTypes.BOOLEAN,
       defaultValue: true,
     },
+    image: {
+      type: DataTypes.STRING,
+    },
   },
   {
     sequelize,
@@ -51,3 +56,6 @@ User.init(
     modelName: 'user',
   }
 );
+
+User.hasMany(Friendship, { foreignKey: 'user' });
+User.hasMany(Friendship, { foreignKey: 'friend' });
