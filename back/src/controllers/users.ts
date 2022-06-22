@@ -1,20 +1,18 @@
-import { Op } from 'sequelize';
 import { User } from '../models';
 import { hash } from 'bcrypt';
 import { Request, Response } from 'express';
 import { checkIfNull } from '../utils';
-import { Friendship } from '../models/Friendship';
-import { findAllUserFriendships } from '../services';
+import {
+  findAllUserFriendships,
+  findAllUsers,
+  findUserBy,
+  findUserById,
+  createUser as createUserService,
+} from '../services';
 
 export const getUsers = async (req: Request, res: Response) => {
   try {
-    const users = await User.findAndCountAll({
-      attributes: { exclude: ['passwordHash'] },
-      include: [
-        { model: User, as: 'friend', attributes: ['id'] },
-        { model: User, as: 'friends', attributes: ['id'] },
-      ],
-    });
+    const users = await findAllUsers();
 
     if (users.count === 0) return res.status(404).json({ error: 'No users' });
 
@@ -29,9 +27,9 @@ export const getUser = async (req: Request, res: Response) => {
   try {
     const userId = req.decodedToken?.id;
 
-    const user = await User.findByPk(userId, {
-      attributes: { exclude: ['passwordHash'] },
-    });
+    if (!userId) return res.status(404).json({ error: 'Id not found' });
+
+    const user = await findUserById({ userId });
 
     if (user === null) return res.status(404).json({ error: 'Not found' });
 
@@ -52,16 +50,14 @@ export const createUser = async (req: Request, res: Response) => {
       return res.status(404).json({ error: 'Data not provided' });
     }
 
-    const existingUser = await User.findOne({
-      where: { email: email },
-    });
+    const existingUser = await findUserBy({ key: 'email', value: email });
 
     if (existingUser) return res.status(404).json({ error: 'Email already exists' });
 
     const saltRounds = 10;
     const passwordHash = await hash(password, saltRounds);
 
-    const newUser: User = await User.create({ passwordHash, email, username });
+    const newUser: User = await createUserService({ passwordHash, email, username });
 
     return res.status(200).json({ id: newUser.id, email, username });
   } catch (e) {

@@ -1,17 +1,13 @@
 import { Request, Response } from 'express';
 import { compare } from 'bcrypt';
-import { User } from '../models';
 import { generateToken } from '../utils';
+import { findUserBy } from '../services';
 
 export const login = async (req: Request, res: Response) => {
   try {
     const { password, email } = req.body;
 
-    const user = await User.findOne({
-      where: {
-        email: email,
-      },
-    });
+    const user = await findUserBy({ key: 'email', value: email });
 
     if (!user) return res.status(401).json({ error: 'Invalid Email' });
 

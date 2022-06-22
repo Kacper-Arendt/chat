@@ -1,6 +1,5 @@
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../utils';
-import { Friendship } from './Friendship';
 
 export class User extends Model {
   declare id: string;
