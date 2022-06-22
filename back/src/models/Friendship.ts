@@ -2,6 +2,9 @@ import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../utils';
 
 export class Friendship extends Model {
+  declare id: string;
+  declare user: string;
+  declare friend: string;
   declare status: 'PENDING' | 'ACCEPTED' | 'DENIED';
 }
 
