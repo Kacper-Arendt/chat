@@ -12,9 +12,11 @@ import { unknownEndpoint, errorHandler } from './middlewares';
 
 // ROUTES
 import { router } from './routes';
+import { syncHandler } from './models/associations';
 
 export const app: Express = express();
 connectToDatabase().then(() => {
+  syncHandler();
   app.use(cors());
   app.use(helmet());
   app.use(bodyParser.urlencoded({ extended: true }));

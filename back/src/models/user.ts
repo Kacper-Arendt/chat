@@ -56,6 +56,3 @@ User.init(
     modelName: 'user',
   }
 );
-
-User.hasMany(Friendship, { foreignKey: 'user' });
-User.hasMany(Friendship, { foreignKey: 'friend' });

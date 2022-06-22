@@ -46,10 +46,12 @@ module.exports = {
       user: {
         type: DataTypes.UUID,
         allowNull: false,
+        references: { model: 'users', key: 'id' },
       },
       friend: {
         type: DataTypes.UUID,
         allowNull: false,
+        references: { model: 'users', key: 'id' },
       },
       status: {
         type: DataTypes.ENUM('PENDING', 'ACCEPTED', 'DENIED'),
