@@ -1,10 +1,12 @@
 import { Friendship } from '../models/Friendship';
 import { Op } from 'sequelize';
 
+type Status = 'PENDING' | 'ACCEPTED' | 'DENIED';
+
 interface CreateFriendshipInterface {
   userId: string;
   friendId: string;
-  status: 'PENDING' | 'ACCEPTED' | 'DENIED';
+  status: Status;
 }
 
 export const createFriendship = async ({ userId, friendId, status }: CreateFriendshipInterface) => {
@@ -16,8 +18,13 @@ export const createFriendship = async ({ userId, friendId, status }: CreateFrien
   return friendship.id;
 };
 
-interface findAllUserFriendships {
-  userId: string;
-}
-export const findAllUserFriendships = async ({ userId }: findAllUserFriendships) =>
+export const findAllUserFriendships = async ({ userId }: { userId: string }) =>
   await Friendship.findAll({ where: { [Op.or]: [{ friend: userId }, { user: userId }] } });
+
+interface ChangeFriendshipStatusInterface {
+  friendshipId: 'string';
+  status: Status;
+}
+
+export const changeFriendshipStatusService = async ({ friendshipId, status }: ChangeFriendshipStatusInterface) =>
+  await Friendship.update({ status: status }, { where: { id: friendshipId } });
