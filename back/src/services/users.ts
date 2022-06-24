@@ -1,4 +1,5 @@
 import { User } from '../models';
+import { Op } from 'sequelize';
 
 export const findAllUsers = async () =>
   User.findAndCountAll({
@@ -26,6 +27,20 @@ interface FindUserByInterface {
 export const findUserBy = async ({ key, value }: FindUserByInterface) =>
   User.findOne({
     where: { [key]: value },
+    include: [
+      { model: User, as: 'friend', attributes: ['id'] },
+      { model: User, as: 'friends', attributes: ['id'] },
+    ],
+  });
+
+export const getAllUserByIds = async ({ arrayIds }: { arrayIds: string[] }) =>
+  User.findAll({
+    attributes: { exclude: ['passwordHash'] },
+    where: {
+      id: {
+        [Op.in]: arrayIds,
+      },
+    },
   });
 
 interface CreateUserInterface {

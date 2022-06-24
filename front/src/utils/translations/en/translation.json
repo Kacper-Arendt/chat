@@ -12,5 +12,6 @@
   "form.haveAccount": "Have an account?",
   "chats": "Chats",
   "chat.newMessage": "New Message",
-  "search": "Search"
+  "search": "Search",
+  "chatRooms.notFound": "Chat rooms not found"
 }

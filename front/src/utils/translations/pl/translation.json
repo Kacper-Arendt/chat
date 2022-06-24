@@ -12,5 +12,6 @@
   "form.haveAccount": "Masz konto?",
   "chats": "Czaty",
   "chat.newMessage": "Nowa wiadomość",
-  "search": "Szukaj"
+  "search": "Szukaj",
+  "chatRooms.notFound": "Nie znaleziono pokoi"
 }

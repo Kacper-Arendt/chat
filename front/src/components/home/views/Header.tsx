@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 // COMPONENTS
-import { HeaderInput } from "components/home/sections";
+import { HeaderInput, ChatRooms } from "components/home/sections";
 
 const StyledWrapper = styled.div`
-  padding: 0.5rem;
-  border-bottom: 1px solid ${({ theme }) => theme.grey200};
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
 
   input {
     padding: 0.5rem;
@@ -16,6 +17,7 @@ export const Header = () => {
   return (
     <StyledWrapper>
       <HeaderInput />
+      <ChatRooms />
     </StyledWrapper>
   );
 };
